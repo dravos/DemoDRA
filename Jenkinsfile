@@ -10,9 +10,9 @@ pipeline {
     agent any
     environment {
         // You need to specify 4 required environment variables first, they are going to be used for the following IBM Cloud DevOps steps
-        IBM_CLOUD_DEVOPS_API_KEY = credentials('BLUEMIX_CREDENTIAL_ID_PLACEHOLDER')
-        IBM_CLOUD_DEVOPS_APP_NAME = 'DevOps-Insight-Sample-App'
-        IBM_CLOUD_DEVOPS_TOOLCHAIN_ID = 'TOOLCHAIN_ID_PLACEHOLDER'
+        IBM_CLOUD_DEVOPS_API_KEY = credentials('BM_API_KEY')
+        IBM_CLOUD_DEVOPS_APP_NAME = 'Weather_V1'
+        IBM_CLOUD_DEVOPS_TOOLCHAIN_ID = 'b533c1b7-5a9d-4795-91c9-69f66471eccc'
     }
     stages {
         stage('Build') {
@@ -20,7 +20,7 @@ pipeline {
                 // get git commit from Jenkins
                 GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                 GIT_BRANCH = 'master'
-                GIT_REPO = 'https://github.com/xunrongli-ibm/DemoDRA/'
+                GIT_REPO = 'https://github.com/dravos/DemoDRA'
             }
             steps {
                 echo "building"
